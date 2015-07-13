@@ -91,10 +91,10 @@ end\
 \
 Prefix Verb URI Pattern 			Controller#Action \
 users 	GET /users(.:format) 		users#index 		displays a list of all users\
-		POST /users(.:format) 		users#create		return HTML form creating new user\
-new_user 	GET /users/new(.:format) 	users#new 			create new user\
+/signup	POST /users(.:format) 		users#create		return HTML form creating new user\
+/signup 	GET /users/new(.:format) 	users#new 			create new user\
 edit_user 	GET /users/:id/edit(.:format) 	users#edit 			return an HTML form editing user profile\
-user		GET /users/:id(.:format) 	users#show 		show user profile page (with api key)\
+/account	GET /users/:id(.:format) 	users#show 		show user profile page (with api key)\
 		PATCH /users/:id(.:format) 	users#update \
 		PUT /users/:id(.:format) 	users#update \
 		DELETE /users/:id(.:format) 	users#destroy		delete specific user\
