@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :require_login, only: [:show]
+  before_action :require_login, only: [:show, :reset_token]
 
   rescue_from ActiveRecord::RecordInvalid, with: :invalid_signup
 
@@ -15,8 +15,10 @@ class UsersController < ApplicationController
   end
 
   #add this to the before_action list
-  def show
-    @user = current_user
+  def reset_token
+    current_user.gen_api_token
+    current_user.save
+    redirect_to "/account"
   end
 
   protected
