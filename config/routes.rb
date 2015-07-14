@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -14,11 +15,17 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
     resources :users
 
-    root to: 'users#index'
-    
+    root to: 'static_pages#index'
+
     get '/signup', to: 'users#new'
     post '/signup', to: 'users#create'
     get '/account', to: 'users#show'
+
+    get '/login', to: 'sessions#new'
+    post '/login', :to 'sessions#create'
+
+    get 'static_pages/about'
+    get 'static_pages/contact'
 
   # Example resource route with options:
   #   resources :products do
