@@ -11,6 +11,9 @@ class User < ActiveRecord::Base
             :presence => true,
             :uniqueness => true
 
+  validates :email_confirmation,
+            :presence => true
+
   def self.confirm(params)
     user = self.find_by!(email: params[:email])
     user.authenticate(params[:password])
