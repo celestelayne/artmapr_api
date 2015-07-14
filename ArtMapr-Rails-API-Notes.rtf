@@ -172,6 +172,113 @@ root to: \'93static_pages#home"\
 get "/login", to: "sessions#new"\
 post "/login", to: "sessions#create"\
 \
+
+\b Sessions Helper
+\b0 \
+\
+\pard\pardeftab720\sl380
+
+\f1 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 def\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4  \cf12 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec12 login\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 (store_owner)\
+  session[\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 :owner_id\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 ] \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 =\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4  store_owner.id\
+  @current_owner \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 =\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4  store_owner\
+\cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 end\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\
+\cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 def\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4  \cf12 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec12 logout\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+  @current_owner \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 =\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4  session[\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 :owner_id\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 ] \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 =\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4  \cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 nil\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 end\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\
+\cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 def\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4  \cf12 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec12 current_owner\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+  @current_owner \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 ||=\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4  \cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 User\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 .find_by(\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 id:\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4  session[\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 :owner_id\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 ])\
+\cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 end\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\
+\cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 def\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4  \cf12 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec12 logged_in?\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+  \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 !\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 current_owner.nil?\
+\cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 end\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\
+\cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 def\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4  \cf12 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec12 require_login\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+  \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 if\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4  \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 !\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 logged_in?\
+    redirect_to \cf5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 "/login"\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+  \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 end\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 end\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0 \cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+Add the following to the application_controller:\
+\
+\pard\pardeftab720\sl380
+
+\f1 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 class ApplicationController < ActionController::Base\
+  ...\
+\
+  include SessionsHelper\
+end\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0 \cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+\
 ADD Bootstrap and Angular\
 \
 >> touch .bowerrc\
