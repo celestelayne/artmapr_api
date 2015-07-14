@@ -1,10 +1,14 @@
 {\rtf1\ansi\ansicpg1252\cocoartf1347\cocoasubrtf570
 {\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Consolas;\f2\fswiss\fcharset0 ArialMT;
-\f3\fnil\fcharset0 HelveticaNeue;}
+\f3\fnil\fcharset0 HelveticaNeue;\f4\fnil\fcharset0 Verdana;\f5\fnil\fcharset0 Consolas-Bold;
+}
 {\colortbl;\red255\green255\blue255;\red148\green6\blue75;\red245\green245\blue245;\red38\green38\blue38;
 \red19\green36\blue126;\red14\green114\blue164;\red26\green26\blue26;\red255\green255\blue255;\red0\green0\blue0;
-\red38\green38\blue38;\red245\green245\blue245;\red23\green44\blue110;\red148\green6\blue75;\red101\green71\blue146;
-\red132\green134\blue132;\red14\green114\blue164;\red83\green149\blue74;\red19\green36\blue126;}
+\red38\green38\blue38;\red245\green245\blue245;\red101\green71\blue146;\red230\green83\blue52;\red132\green134\blue132;
+\red23\green44\blue110;\red148\green6\blue75;\red101\green71\blue146;\red132\green134\blue132;\red14\green114\blue164;
+\red83\green149\blue74;\red19\green36\blue126;\red0\green0\blue0;\red242\green242\blue242;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
 \margl1440\margr1440\vieww25400\viewh6780\viewkind0
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 
@@ -34,7 +38,7 @@ In the Gemfile, add:\
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 
 \f0 \cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
-In the config/application.rb (inside the Application Class), configure rack-cors to accept requests from any origin (or I can specify it only accept requests from Artmapw Node App).\
+In the config/application.rb (inside the Application Class), configure rack-cors to accept requests from any origin (or I can specify it only accept requests from Artmapr Node App).\
 \
     config.middleware.insert_before 0, "Rack::Cors" do\
       allow do\
@@ -99,21 +103,142 @@ edit_user 	GET /users/:id/edit(.:format) 	users#edit 			return an HTML form edit
 		PUT /users/:id(.:format) 	users#update \
 		DELETE /users/:id(.:format) 	users#destroy		delete specific user\
 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl512
+\ls1\ilvl0
+\f3\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 Add 
+\f1\fs28 \cb9 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 bcrypt
+\f3\fs32 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  to gemfile\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs28 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 make sure models > users.rb has_secure_password\
+\
+\pard\pardeftab720\sl380
+
+\f1 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 class\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4  \cf12 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec12 User < ActiveRecord::Base\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\
+  has_secure_password\
+\
+  \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 def\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4  \cf12 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec12 self.confirm\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 (params)\
+    user \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 =\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4  \cf13 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec13 self\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 .find_by!(\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 email:\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4  params[\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 :email\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 ])\
+    user.authenticate(params[\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 :password\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 ])\
+  \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 end\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\
+\cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 end\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0 \cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
 Create users controller\
 >> rails g controller users\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 Create Static Pages
+\b0 \
+>> rails g controller static_pages index about contact\
+\
+root to: \'93static_pages#home"\
+\
+
+\b Create Sessions
+\b0 \
+>> rails g controller sessions\
+\
+get "/login", to: "sessions#new"\
+post "/login", to: "sessions#create"\
+\
+ADD Bootstrap and Angular\
+\
+>> touch .bowerrc\
+>> atom .bowerrc\
+\
+\pard\pardeftab720\sl380
+
+\f1 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \{\
+  "directory": "vendor/assets/components"\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0 \cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+Install Bootstrap:\
+\pard\pardeftab720\sl380
+
+\f1 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 bower install --save bootstrap
+\f0 \cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+Require Bootstrap:\
+\pard\pardeftab720\sl380
+
+\f1 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 *= require bootstrap/dist/css/bootstrap.min\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0 \cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+Install Angular:\
+\pard\pardeftab720\sl380
+
+\f1 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 bower install --save angular\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0 \cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+Require Angular just before the require_tree .\
+\pard\pardeftab720\sl380
+
+\f1 \cf14 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec14 //= require angular/angular \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0 \cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+\
+
+\b ROUTES
+\b0  \
 \
 Add Simple Form to Gemfile:\
 >> gem \'91simple_form\'92\
 >> bundle install\
 >> 
-\f1 \cf12 \cb3 \expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec12 rails generate simple_form:install --bootstrap\cf4 \expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec4 \
+\f1 \cf15 \cb11 \expnd0\expndtw0\kerning0
+rails generate simple_form:install --bootstrap\cf10 \cb11 \expnd0\expndtw0\kerning0
+\
 
-\f0 \cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+\f0 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
 
-\b RESTART RAILS SERVER
-\b0 \
+\b RESTART RAILS SERVER\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \
+\
 \
 Add methods to UsersController:\
 
@@ -123,33 +248,33 @@ Add users#index method to UsersController:\
 \pard\pardeftab720\sl380
 \cf0 \
 
-\f1 \cf13 \cb11 \expnd0\expndtw0\kerning0
+\f1 \cf16 \cb11 \expnd0\expndtw0\kerning0
 class\cf10 \expnd0\expndtw0\kerning0
- \cf14 \expnd0\expndtw0\kerning0
+ \cf17 \expnd0\expndtw0\kerning0
 UsersController < ApplicationController\cf10 \expnd0\expndtw0\kerning0
 \
 \
-  \cf15 \expnd0\expndtw0\kerning0
+  \cf18 \expnd0\expndtw0\kerning0
 # Grabs the users\cf10 \expnd0\expndtw0\kerning0
 \
-  \cf13 \expnd0\expndtw0\kerning0
+  \cf16 \expnd0\expndtw0\kerning0
 def\cf10 \expnd0\expndtw0\kerning0
- \cf14 \expnd0\expndtw0\kerning0
+ \cf17 \expnd0\expndtw0\kerning0
 index\cf10 \expnd0\expndtw0\kerning0
 \
-    @users \cf13 \expnd0\expndtw0\kerning0
+    @users \cf16 \expnd0\expndtw0\kerning0
 =\cf10 \expnd0\expndtw0\kerning0
- \cf16 \expnd0\expndtw0\kerning0
+ \cf19 \expnd0\expndtw0\kerning0
 User\cf10 \expnd0\expndtw0\kerning0
 .all\
-    render \cf16 \expnd0\expndtw0\kerning0
+    render \cf19 \expnd0\expndtw0\kerning0
 :index\cf10 \expnd0\expndtw0\kerning0
 \
-  \cf13 \expnd0\expndtw0\kerning0
+  \cf16 \expnd0\expndtw0\kerning0
 end\cf10 \expnd0\expndtw0\kerning0
 \
 \
-\cf13 \expnd0\expndtw0\kerning0
+\cf16 \expnd0\expndtw0\kerning0
 end
 \f0 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
@@ -160,17 +285,17 @@ Make an index.html.erb\
 \pard\pardeftab720\sl380
 
 \f1 \cf10 \cb11 \expnd0\expndtw0\kerning0
-<\cf17 \expnd0\expndtw0\kerning0
+<\cf20 \expnd0\expndtw0\kerning0
 h1\cf10 \expnd0\expndtw0\kerning0
->Welcome to Users Index.</\cf17 \expnd0\expndtw0\kerning0
+>Welcome to Users Index.</\cf20 \expnd0\expndtw0\kerning0
 h1\cf10 \expnd0\expndtw0\kerning0
 >\
 \
-<\cf17 \expnd0\expndtw0\kerning0
+<\cf20 \expnd0\expndtw0\kerning0
 div\cf10 \expnd0\expndtw0\kerning0
 >\
 There are currently <%= @users.length %> signed up for the Artmapw API.\
-</\cf17 \expnd0\expndtw0\kerning0
+</\cf20 \expnd0\expndtw0\kerning0
 div\cf10 \expnd0\expndtw0\kerning0
 >
 \f0 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
@@ -184,34 +309,34 @@ Add users#new method to UsersController:\
 \pard\pardeftab720\sl380
 
 \f1 \cf10 \cb11 \expnd0\expndtw0\kerning0
-  \cf13 \expnd0\expndtw0\kerning0
+  \cf16 \expnd0\expndtw0\kerning0
 def\cf10 \expnd0\expndtw0\kerning0
- \cf14 \expnd0\expndtw0\kerning0
+ \cf17 \expnd0\expndtw0\kerning0
 new\cf10 \expnd0\expndtw0\kerning0
 \
-    \cf15 \expnd0\expndtw0\kerning0
+    \cf18 \expnd0\expndtw0\kerning0
 # we need to make\cf10 \expnd0\expndtw0\kerning0
 \
-    \cf15 \expnd0\expndtw0\kerning0
+    \cf18 \expnd0\expndtw0\kerning0
 # a new user\cf10 \expnd0\expndtw0\kerning0
 \
-    \cf15 \expnd0\expndtw0\kerning0
+    \cf18 \expnd0\expndtw0\kerning0
 # to pass to the \cf10 \expnd0\expndtw0\kerning0
 \
-    \cf15 \expnd0\expndtw0\kerning0
+    \cf18 \expnd0\expndtw0\kerning0
 # form later\cf10 \expnd0\expndtw0\kerning0
 \
-    @user \cf13 \expnd0\expndtw0\kerning0
+    @user \cf16 \expnd0\expndtw0\kerning0
 =\cf10 \expnd0\expndtw0\kerning0
- \cf16 \expnd0\expndtw0\kerning0
+ \cf19 \expnd0\expndtw0\kerning0
 User\cf10 \expnd0\expndtw0\kerning0
-.\cf13 \expnd0\expndtw0\kerning0
+.\cf16 \expnd0\expndtw0\kerning0
 new\cf10 \expnd0\expndtw0\kerning0
 \
-    render \cf16 \expnd0\expndtw0\kerning0
+    render \cf19 \expnd0\expndtw0\kerning0
 :new\cf10 \expnd0\expndtw0\kerning0
 \
-  \cf13 \expnd0\expndtw0\kerning0
+  \cf16 \expnd0\expndtw0\kerning0
 end
 \f0 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
@@ -222,25 +347,25 @@ Make  a new.html.erb\
 \pard\pardeftab720\sl380
 
 \f1 \cf10 \cb11 \expnd0\expndtw0\kerning0
-<%= simple_form_for @user \cf13 \expnd0\expndtw0\kerning0
+<%= simple_form_for @user \cf16 \expnd0\expndtw0\kerning0
 do \cf10 \expnd0\expndtw0\kerning0
 |f| %>\
-  <%= f.input \cf16 \expnd0\expndtw0\kerning0
+  <%= f.input \cf19 \expnd0\expndtw0\kerning0
 :first_name, label: \'91First Name\'92\cf10 \expnd0\expndtw0\kerning0
  %>\
-  <%= f.input \cf16 \expnd0\expndtw0\kerning0
+  <%= f.input \cf19 \expnd0\expndtw0\kerning0
 :last_name, label: \'91Last Name\'92\cf10 \expnd0\expndtw0\kerning0
  %>\
-  <%= f.input \cf16 \expnd0\expndtw0\kerning0
+  <%= f.input \cf19 \expnd0\expndtw0\kerning0
 :email, placeholder: \'91user@domain.com\'92\cf10 \expnd0\expndtw0\kerning0
  %>\
-  <%= f.input \cf16 \expnd0\expndtw0\kerning0
+  <%= f.input \cf19 \expnd0\expndtw0\kerning0
 :password_digest\cf10 \expnd0\expndtw0\kerning0
  %>\
-  <%= f.button \cf16 \expnd0\expndtw0\kerning0
+  <%= f.button \cf19 \expnd0\expndtw0\kerning0
 :submit\cf10 \expnd0\expndtw0\kerning0
  %>\
-<% \cf13 \expnd0\expndtw0\kerning0
+<% \cf16 \expnd0\expndtw0\kerning0
 end\cf10 \expnd0\expndtw0\kerning0
  %>\
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
@@ -251,36 +376,36 @@ Add users#create method to UsersController:\
 \pard\pardeftab720\sl380
 
 \f1 \cf10 \cb11 \expnd0\expndtw0\kerning0
-  \cf13 \expnd0\expndtw0\kerning0
+  \cf16 \expnd0\expndtw0\kerning0
 def\cf10 \expnd0\expndtw0\kerning0
- \cf14 \expnd0\expndtw0\kerning0
+ \cf17 \expnd0\expndtw0\kerning0
 create\cf10 \expnd0\expndtw0\kerning0
 \
-    user_params \cf13 \expnd0\expndtw0\kerning0
+    user_params \cf16 \expnd0\expndtw0\kerning0
 =\cf10 \expnd0\expndtw0\kerning0
- params.\cf13 \expnd0\expndtw0\kerning0
+ params.\cf16 \expnd0\expndtw0\kerning0
 require\cf10 \expnd0\expndtw0\kerning0
-(\cf16 \expnd0\expndtw0\kerning0
+(\cf19 \expnd0\expndtw0\kerning0
 :user\cf10 \expnd0\expndtw0\kerning0
-).permit(\cf16 \expnd0\expndtw0\kerning0
+).permit(\cf19 \expnd0\expndtw0\kerning0
 :first_name\cf10 \expnd0\expndtw0\kerning0
-, \cf16 \expnd0\expndtw0\kerning0
+, \cf19 \expnd0\expndtw0\kerning0
 :last_name\cf10 \expnd0\expndtw0\kerning0
-, \cf16 \expnd0\expndtw0\kerning0
+, \cf19 \expnd0\expndtw0\kerning0
 :email\cf10 \expnd0\expndtw0\kerning0
-, \cf16 \expnd0\expndtw0\kerning0
+, \cf19 \expnd0\expndtw0\kerning0
 :password\cf10 \expnd0\expndtw0\kerning0
 )\
-    @user \cf13 \expnd0\expndtw0\kerning0
+    @user \cf16 \expnd0\expndtw0\kerning0
 =\cf10 \expnd0\expndtw0\kerning0
- \cf16 \expnd0\expndtw0\kerning0
+ \cf19 \expnd0\expndtw0\kerning0
 User\cf10 \expnd0\expndtw0\kerning0
 .create(user_params)\
 \
-    redirect_to \cf18 \expnd0\expndtw0\kerning0
+    redirect_to \cf21 \expnd0\expndtw0\kerning0
 "/users"\cf10 \expnd0\expndtw0\kerning0
 \
-  \cf13 \expnd0\expndtw0\kerning0
+  \cf16 \expnd0\expndtw0\kerning0
 end
 \f0 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
@@ -297,22 +422,22 @@ Add has_secure_password to User model\
 \pard\pardeftab720\sl380
 
 \f1\b0 \cf10 \cb11 \expnd0\expndtw0\kerning0
-  \cf13 \expnd0\expndtw0\kerning0
+  \cf16 \expnd0\expndtw0\kerning0
 def\cf10 \expnd0\expndtw0\kerning0
- \cf14 \expnd0\expndtw0\kerning0
+ \cf17 \expnd0\expndtw0\kerning0
 show\cf10 \expnd0\expndtw0\kerning0
 \
-    @user \cf13 \expnd0\expndtw0\kerning0
+    @user \cf16 \expnd0\expndtw0\kerning0
 =\cf10 \expnd0\expndtw0\kerning0
- \cf16 \expnd0\expndtw0\kerning0
+ \cf19 \expnd0\expndtw0\kerning0
 User\cf10 \expnd0\expndtw0\kerning0
-.find(params[\cf16 \expnd0\expndtw0\kerning0
+.find(params[\cf19 \expnd0\expndtw0\kerning0
 :id\cf10 \expnd0\expndtw0\kerning0
 ])\
-    render \cf16 \expnd0\expndtw0\kerning0
+    render \cf19 \expnd0\expndtw0\kerning0
 :show\cf10 \expnd0\expndtw0\kerning0
 \
-  \cf13 \expnd0\expndtw0\kerning0
+  \cf16 \expnd0\expndtw0\kerning0
 end
 \f0\b \cf0 \cb1 \kerning1\expnd0\expndtw0 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
@@ -320,21 +445,72 @@ end
 \b0 \cf0 Make  a show.html.erb to display the User Profile page\
 >> touch app/views/users/show.html.erb\
 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 
-\b Create Static Pages
+\b \cf0 Authentication via Access Token
 \b0 \
->> rails g controller static_pages index about contact\
 \
-root to: \'93static_pages#home"\
+Provide client with access token and a place to store that token:\
+\
+>> rails g model api_key access_token\
+there are other columns that can be added to this column:\
+- role, to specify permissions\
+- user_id, to specify the user the token belongs to\
+- expires_at, to specify when the token expires\
+\
+>> rake db:migrate\
+\
+In the ApiKey model, 
+\f4 \cf22 \cb23 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec22 generate a random access token string each time a record is created
+\f0 \cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 :\
+\
+class ApiKey < ActiveRecord::Base\
+  before_create :generate_access_token\
+\
+  private\
+\
+  def generate_access_token\
+    begin\
+      self.access_token = SecureRandom.hex\
+    end while self.class.exists?(access_token: access_token)\
+  end\
+  \
+end\
+\
+SecureRandom.hex generates a random hexadecimal string and checks to see if another key exists with the same token and regenerates the token if that is the case.\
+
+\f1 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\fs22 \cf0 Celeste-Layne-3:artmapr_api admin$ rails c\
+Loading development environment (Rails 4.2.1)\
+2.2.1 :001 > ApiKey.create!\
+   (9.0ms)  BEGIN\
+  ApiKey Exists (89.7ms)  SELECT  1 AS one FROM "api_keys" WHERE "api_keys"."access_token" = $1 LIMIT 1  [["access_token", "9f129d001d3e2439c98c72a8eeb200c3"]]\
+  SQL (221.2ms)  INSERT INTO "api_keys" ("created_at", "updated_at", "access_token") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2015-07-14 00:13:44.121442"], ["updated_at", "2015-07-14 00:13:44.121442"], ["access_token", "9f129d001d3e2439c98c72a8eeb200c3"]]\
+   (680.1ms)  COMMIT\
+
+\f5\b\fs28  => #<ApiKey id: 1, access_token: "9f129d001d3e2439c98c72a8eeb200c3", created_at: "2015-07-14 00:13:44", updated_at: "2015-07-14 00:13:44"> 
+\f1\b0\fs22 \
+2.2.1 :002 > 
+\fs28 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+This access_token will be rendered on the profile page so that the user can copy/paste into their API tool. 
+\f4 \cf22 \cb23 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec22 Now we need to restrict access to the API by requiring that the token is passed in
+\f1 \cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
 \
 
-\b Create Sessions
+\f0\b INSTALL ANGULAR
 \b0 \
->> rails g controller sessions\
 \
-get "/login", to: "sessions#new"\
-post "/login", to: "sessions#create"\
 \
-Add SessionsHelper:
+\
+\
+\
+
 \b \
 }
