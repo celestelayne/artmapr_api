@@ -32,6 +32,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Use Simple Form
+gem 'simple_form'
+
 # Use Rack CORS Middleware
 gem 'rack-cors', :require => 'rack/cors'
 
