@@ -1,2 +1,24 @@
-<h1>StaticPages#index</h1>
-<p>Find me in app/views/static_pages/index.html.erb</p>
+<!DOCTYPE html>
+<html lang="en" ng-app="artmaprApi">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Artmapr Api</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <script type="text/javascript" src="app/assets/javascripts/application.js">
+
+  </script>
+</head>
+<body>
+  <header>
+    <nav class="cf" ng-include="'app/views/layouts/nav.html'"></nav>
+  </header>
+  <div class="container-fluid" ng-view>
+
+  </div>
+
+</body>
+</html>

@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
-  before_validation :on => :create, :gen_api_token
+  # before_validation :on => :create, :gen_api_token
 
   validates :api_token,
             :uniqueness => true
