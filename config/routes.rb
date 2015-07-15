@@ -20,9 +20,10 @@ Rails.application.routes.draw do
     get '/signup', to: 'users#new'
     post '/signup', to: 'users#create'
     get '/account', to: 'users#show'
+    post '/account/reset_token', to: 'users#reset_token'
 
-    # get '/login', to: 'sessions#new'
-    # post '/login', :to 'sessions#create'
+    get '/login', to: 'sessions#new'
+    post '/login', to: 'sessions#create'
 
     get 'static_pages/about'
     get 'static_pages/contact'

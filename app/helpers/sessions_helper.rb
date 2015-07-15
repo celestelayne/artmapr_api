@@ -14,12 +14,16 @@ module SessionsHelper
   end
 
   def logged_in?
-    !current_user.nil?
+    if current_user == nil
+      redirect_to '/login'
+    end
+    # !current_user.nil?
   end
 
   def require_login
     if !logged_in?
       redirect_to '/login'
+    end
   end
 
 end

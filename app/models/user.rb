@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
-  before_validation :on => :create, :gen_api_token
+  # before_validation :on => :create, :gen_api_token
 
   validates :api_token,
             :uniqueness => true
@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
   validates :email,
             :presence => true,
             :uniqueness => true
+
+  validates :email_confirmation,
+            :presence => true
 
   def self.confirm(params)
     user = self.find_by!(email: params[:email])
