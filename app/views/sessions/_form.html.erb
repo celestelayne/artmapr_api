@@ -1,0 +1,14 @@
+<%= simple_form_for (@user), url: '/sessions', method: 'post' do |f| %>
+
+  <div class="field">
+    <%= f.input :email, label: 'Email Address', placeholder: 'user@domain.com' %>
+  </div>
+  <div class="field">
+    <%= f.input :password_digest, label: 'Password', hint: 'No special characters.' %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit, "Sign Up", class: "btn" %>
+  </div>
+
+<% end %>

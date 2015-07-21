@@ -1,0 +1,137 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700);
+
+/*--------------------
+[Table of Contents]
+
+1.	Body
+	2.	Header | #header
+	3.	Content | #content
+	2.	Footer | #footer
+
+--------------------*/
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-size: 62.5%;
+    font-family: 'Source Sans Pro', sans-serif;
+    // font-family: 'Questrial', sans-serif;
+  }
+
+  p {
+    font-size: 1.2em;
+    line-height: 1.5em;
+  }
+
+  #artmapr-main {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  #artmapr-nav {
+    height: 60px;
+    background-color: #5B3586;
+  }
+
+  .navbar-default .navbar-nav > li > a {
+    color: #F2F2F2;
+  }
+
+  .navbar-default .navbar-nav > li > a:hover {
+    color: #F2F2F2;
+  }
+
+  .menu-items {
+    list-style-type: none;
+    width: 50%;
+    display: inline-block;
+  }
+
+  .nav-item {
+    color: #F2F2F2;
+    font-size: 3em;
+    text-transform: uppercase;
+  }
+
+  .navbar-right {
+    text-align: center;
+    line-height: 55px;
+  }
+
+  #login-button  {
+    display: inline;
+    vertical-align: middle;
+    margin-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 150%;
+    border: 2px solid #F2F2F2;
+    border-radius: 0;
+    background-color: transparent;
+    color: #F2F2F2;
+    font-size: 3em;
+    text-transform: uppercase;
+    z-index: 5;
+  }
+
+  #signup-button  {
+    display: inline;
+    vertical-align: middle;
+    margin-left: 5px;
+    margin-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 2px solid #F2F2F2;
+    border-radius: 0;
+    background-color: transparent;
+    color: #F2F2F2;
+    font-size: 3em;
+    text-transform: uppercase;
+    z-index: 5;
+  }
+
+  #login-button:hover,
+  #login-button:active {
+    color: #FFF;
+    background: #F2F2F2;
+    border-color: #F2F2F2;
+  }
+
+  #signup-button:hover,
+  #signup-button:active {
+    color: #FFF;
+    background: #F2F2F2;
+    border-color: #F2F2F2;
+  }
+
+  footer {
+    height: 40px;
+    background-color: #5B3586;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }

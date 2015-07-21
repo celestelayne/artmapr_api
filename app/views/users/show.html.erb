@@ -1,0 +1,32 @@
+<div class="col-md-6 col-md-offset-3">
+  <h1>Account Profile</h1>
+  <div class="gravatar-image">
+    <%= gravatar_for @user %>
+  </div>
+  <div>
+    <strong>Name:</strong>
+    <%= @user.first_name %> <%= @user.last_name %>
+  </div>
+  <p>
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </p>
+  <!-- change password -->
+  <div class="actions">
+    <%= f.button :submit, "Edit Profile", class: "button" %>
+    <%= f.button :submit, "Change Password", class: "button" %>
+  </div>
+
+  <hr/>
+
+  <h3>API Token</h3>
+
+  <p>
+    <%= @user.api_token %>
+  </p>
+
+  <div class="actions">
+    <%= f.button :submit, "Reset Token", class: "button" %>
+  </div>
+
+</div>
