@@ -2,11 +2,11 @@ Rails.application.routes.draw do
 
     root to: 'static_pages#index'
     get '/login', to: 'sessions#new'
+    post '/login', to: 'sessions#create'
 
     get '/about', to: 'static_pages#about'
     get '/contact', to: 'static_pages#contact'
 
-    post '/sessions', to: 'sessions#create'
     get '/logout', to: 'sessions#logout'
     get '/signup', to: 'users#new'
 
