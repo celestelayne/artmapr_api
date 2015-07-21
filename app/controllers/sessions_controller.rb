@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   before_action :current_user
-  # rescue_from ActiveRecord::RecordNotFound, with: :failed_login
+  rescue_from ActiveRecord::RecordNotFound, with: :failed_login
 
   def index
     # @home_page = true
@@ -13,13 +13,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    # user_params = params.require(:user).permit(:email, :password)
+    # @user = User.confirm(params)
     @user = User.confirm(params.require(:user).permit(:email, :password))
 
     if @user
       login(@user)
       flash[:success] = "Welcome to the ArtMapr API"
-      redirect_to @user
+      # redirect_to @user
+      redirect_to '/account'
     else
       flash[:danger] = "Invalid email/password combination"
       redirect_to login_path
@@ -34,9 +35,9 @@ class SessionsController < ApplicationController
 
   protected
 
-  # def failed_login(e)
-  #   flash[:error] = "Failed Login"
-  #   redirect_to "/login"
-  # end
+  def failed_login(e)
+    flash[:error] = "Failed Login"
+    redirect_to "/login"
+  end
 
 end
