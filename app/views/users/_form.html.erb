@@ -1,0 +1,13 @@
+<%= simple_form_for @user do |f| %>
+
+  <div class="field">
+    <%= f.input :password_digest, hint: 'No special characters.' %>
+  </div>
+  <div class="field">
+    <%= f.input :email, placeholder: 'user@domain.com' %>
+  </div>
+  <div class="actions">
+    <%= f.button :submit, class: "button" %>
+  </div>
+
+<% end %>

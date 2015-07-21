@@ -4,14 +4,25 @@ class UsersController < ApplicationController
 
   rescue_from ActiveRecord::RecordInvalid, with: :invalid_signup
 
+  def index
+    @users = User.all
+    # render :index
+  end
+
   def new
     @user = User.new
   end
 
   def create
-    @user = User.create!(user_params)
+    @user = User.create(user_params)
     login(@user)
     redirect_to "/account"
+    # redirect_to "/users/#{@user.id}"
+  end
+
+  def show
+    @user = User.find(params[:id])
+    render :show
   end
 
   #add this to the before_action list
@@ -31,7 +42,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_digest)
+    params.require(:user).permit(:first_name, :last_name, :email, :password)
   end
 
 end
