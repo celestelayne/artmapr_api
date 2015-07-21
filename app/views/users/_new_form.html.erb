@@ -1,0 +1,22 @@
+<%= simple_form_for @user do |f| %>
+
+  <div class="field">
+    <%= f.input :first_name, label: 'First Name' %>
+  </div>
+  <div class="field">
+    <%= f.input :last_name, label: 'Last Name' %>
+  </div>
+  <div class="field">
+    <%= f.input :email, label: 'Email Address', placeholder: 'user@domain.com' %>
+  </div>
+  <div class="field">
+    <%= f.input :password, label: 'Password', hint: 'No special characters.' %>
+  </div>
+  <div class="field">
+    <%= f.input :password_confirmation, label: 'Password', hint: 'Type password again.' %>
+  </div>
+  <div class="actions">
+    <%= f.button :submit, "Sign Up", class: "button" %>
+  </div>
+
+<% end %>

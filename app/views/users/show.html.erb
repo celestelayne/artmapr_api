@@ -2,6 +2,7 @@
   <h1>Account Profile</h1>
   <div class="gravatar-image">
     <%= gravatar_for @user %>
+    <a href="http://gravatar.com/emails" target="_blank">change photo</a>
   </div>
   <div>
     <strong>Name:</strong>
@@ -11,11 +12,12 @@
     <strong>Email:</strong>
     <%= @user.email %>
   </p>
-  <!-- change password -->
-  <div class="actions">
-    <%= f.button :submit, "Edit Profile", class: "button" %>
-    <%= f.button :submit, "Change Password", class: "button" %>
-  </div>
+
+  <% if current_user != false %>
+    <% if current_user == @user %>
+  	<%= link_to 'Edit', edit_user_path(@user) %>
+    <% end %>
+  <% end %>
 
   <hr/>
 
@@ -24,9 +26,5 @@
   <p>
     <%= @user.api_token %>
   </p>
-
-  <div class="actions">
-    <%= f.button :submit, "Reset Token", class: "button" %>
-  </div>
 
 </div>

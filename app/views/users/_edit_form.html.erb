@@ -1,0 +1,19 @@
+<%= simple_form_for @user do |f| %>
+
+  <div class="field">
+    <%= f.input :first_name, label: 'Your first name here' %>
+  </div>
+  <div class="field">
+    <%= f.input :last_name, label: 'Your last name here' %>
+  </div>
+  <div class="field">
+    <%= f.input :email, placeholder: 'user@domain.com' %>
+  </div>
+  <div class="field">
+    <%= f.input :password, hint: 'No special characters.' %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Update Profile", class: "btn btn-primary" %>
+  </div>
+
+<% end %>
