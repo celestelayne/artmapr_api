@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_login, only: [:show, :reset_token]
   before_filter :redirect_unauthenticated, except: [:new, :create, :show]
 
-  # rescue_from ActiveRecord::RecordInvalid, with: :invalid_signup
+  rescue_from ActiveRecord::RecordInvalid, with: :invalid_signup
 
   def index
     @users = User.all
@@ -19,21 +19,22 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
-    if @user.save
-      login(@user)
-      flash[:success] = "Welcome to the ArtMapr API"
-      redirect_to @user
-    else
-      render :new
-    end
+    @user = User.create!(user_params)
+    # if @user.save
+    #   login(@user)
+    #   flash[:success] = "Welcome to the ArtMapr API"
+    #   redirect_to @user
+    # else
+    #   render :new
+    # end
 
-    # redirect_to "/users/#{@user.id}"
-    # redirect_to user_path
+    login(@user)
+    redirect_to '/account'
   end
 
   def show
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
+    @user = current_user
     render :show
   end
 
