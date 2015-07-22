@@ -15,6 +15,14 @@ Rails.application.routes.draw do
 
     resources :users
 
+    namespace :api, defaults: {format: 'json'} do
+      # /api/... Api::
+      namespace :v1 do
+        # resources :arts, only: [:index, :edit, :show, :delete]
+        # resources :venues, only: [:index]
+      end
+    end
+
   # Example resource route with options:
   #   resources :products do
   #     member do
