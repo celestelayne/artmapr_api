@@ -71,7 +71,7 @@ class UsersController < ApplicationController
 
   #add this to the before_action list
   def reset_token
-    current_user.gen_api_token
+    current_user.generate_api_token
     current_user.save
     redirect_to "/account"
   end

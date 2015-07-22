@@ -19,16 +19,27 @@
 @import "font-awesome";
 
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700);
+@import url(http://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic);
+
+@import url(http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic);
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
 
 /*--------------------
 [Table of Contents]
 
-1.	Body
+  1.	Body
 	2.	Header | #header
 	3.	Content | #content
 	2.	Footer | #footer
 
 --------------------*/
+
+  $bodyFont: 'Montserrat', sans-serif;
+  $serifFont: 'Playfair Display', serif;
+  $bodyColor: #525252;
+  $navColor: #F2F2F2;
+  $artmaprColor: #5B3586;
 
   * {
     margin: 0;
@@ -36,14 +47,19 @@
   }
 
   body {
+    font-family: $bodyFont;
     font-size: 62.5%;
-    font-family: 'Source Sans Pro', sans-serif;
-    // font-family: 'Questrial', sans-serif;
+    color: $bodyColor;
+    line-height: 1.5;
   }
 
   p {
     font-size: 1.2em;
     line-height: 1.5em;
+  }
+
+  h1, h2, h3, h4 {
+    color: $artmaprColor;
   }
 
   #artmapr-main {
@@ -52,16 +68,17 @@
   }
 
   #artmapr-nav {
-    height: 60px;
-    background-color: #5B3586;
+    background-color: $artmaprColor;
+    margin-bottom: 0;
+    // letter-spacing: .5em;
   }
 
   .navbar-default .navbar-nav > li > a {
-    color: #F2F2F2;
+    color: $navColor;
   }
 
   .navbar-default .navbar-nav > li > a:hover {
-    color: #F2F2F2;
+    color: $navColor;
   }
 
   .menu-items {
@@ -71,7 +88,7 @@
   }
 
   .nav-item {
-    color: #F2F2F2;
+    color: $navColor;
     font-size: 1.8em;
     text-transform: uppercase;
   }
@@ -88,10 +105,10 @@
     padding-top: 10px;
     padding-bottom: 10px;
     width: 150%;
-    border: 2px solid #F2F2F2;
+    border: 2px solid $navColor;
     border-radius: 0;
     background-color: transparent;
-    color: #F2F2F2;
+    color: $navColor;
     font-size: 1.8em;
     text-transform: uppercase;
     z-index: 5;
@@ -104,10 +121,10 @@
     margin-right: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
-    border: 2px solid #F2F2F2;
+    border: 2px solid $navColor;
     border-radius: 0;
     background-color: transparent;
-    color: #F2F2F2;
+    color: $navColor;
     font-size: 1.8em;
     text-transform: uppercase;
     z-index: 5;
@@ -115,21 +132,124 @@
 
   #login-button:hover,
   #login-button:active {
-    color: #FFF;
-    background: #F2F2F2;
-    border-color: #F2F2F2;
+    color: $bodyColor;
+    background: $navColor;
+    border-color: $navColor;
   }
 
   #signup-button:hover,
   #signup-button:active {
-    color: #FFF;
-    background: #F2F2F2;
-    border-color: #F2F2F2;
+    color: $bodyColor;
+    background: $navColor;
+    border-color: $navColor;
   }
 
+  /*  LANDING PAGE  */
+
+  #mainwrap {
+    background-image:
+      linear-gradient(
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.2)
+      ),
+      url("M_Vitali_25.jpg");
+    position: relative;
+    // width: 100%;
+    margin: 0;
+    background-position: center center;
+    min-height: 700px;
+    background-size: cover;
+  }
+
+  .module {
+    font-family: $serifFont;
+    position: relative;
+    float: left;
+    margin-top: 30%;
+    left: 15%;
+    padding: 15px;
+    background: none;
+    border: none;
+
+    h3 {
+      line-height: 1.5;
+    }
+  }
+
+  .caption-module {
+      position: relative;
+      float: right;
+      right: 10%;
+      margin-top: 50%;
+      width: 25%;
+      background: black;
+      padding: 10px;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  #mainwrap p {
+    color: $navColor;
+  }
+
+  /*  LOGIN & SIGNUP PAGE */
+
+  input.form-control {
+    border-radius: 0;
+  }
+
+  .form-control:focus {
+    border: 2px solid;
+    border-color: $artmaprColor;
+    outline: 0;
+    box-shadow: none;
+  }
+
+  .signup-login-button {
+    text-align: center;
+    margin: auto;
+    text-transform: uppercase;
+    padding:8px 20px;
+    width: 25%;
+    background: none;
+      -moz-user-select: none;
+      background-image: none;
+      border: 3px solid;
+      border-radius: 0;
+      cursor: pointer;
+      display: inline-block;
+      margin-bottom: 0;
+      vertical-align: middle;
+      white-space: nowrap;
+  }
+
+  .btn-outlined {
+      border-radius: 0;
+      -webkit-transition: all 0.3s;
+         -moz-transition: all 0.3s;
+              transition: all 0.3s;
+  }
+
+  .btn-outlined.btn-theme {
+      background: none;
+      color: $artmaprColor;
+      border-color: $artmaprColor;
+  }
+
+  .btn-outlined.btn-theme:hover,
+  .btn-outlined.btn-theme:active {
+      color: $navColor;
+      background: $artmaprColor;
+      border-color: $artmaprColor;
+  }
+
+  /*  FOOTER  */
+
   footer {
-    height: 40px;
-    background-color: #5B3586;
+    background-color: $artmaprColor;
+    color: $navColor;
     position: fixed;
     bottom: 0;
     left: 0;

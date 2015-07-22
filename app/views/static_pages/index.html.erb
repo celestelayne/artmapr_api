@@ -1,24 +1,21 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="artmaprApi">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Artmapr Api</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  <script type="text/javascript" src="app/assets/javascripts/application.js">
-
-  </script>
-</head>
-<body>
-  <header>
-    <nav class="cf" ng-include="'app/views/layouts/nav.html'"></nav>
-  </header>
-  <div class="container-fluid" ng-view>
-
+<div id="mainwrap">
+  <div class="row">
+    <div class="col-xs-6 col-md-4">
+      <div class="panel panel-default module">
+        <div class="mission">
+          <h3>The <strong>ArtMapr API</strong> provides access to public and institutional artworks as well as related information
+              on <%= link_to "artmapr.me", "http://www.artmapr.me", method: :post %>. It's currently available for playing,
+              testing, and learning only, and not for production. Please <%= mail_to 'hello@artmapr.me' do %>contact us<% end %> for more information.
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-8">
+      <div class="caption-module art-caption">
+        <p>Massimo Vitali<br />
+            Scala dei Turchi(#3850), 2009<br />
+            72 x 86 inches</p>
+      </div>
+    </div>
   </div>
-
-</body>
-</html>
+</div>
