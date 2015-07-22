@@ -13,12 +13,16 @@
   </head>
   <body>
 
-    <%= render 'layouts/header' %>
+      <%= render 'layouts/header' %>  
 
     <div class="container-fluid" id="artmapr-main">
 
     <%= yield %>
-    <%= render 'layouts/footer' %>
+
+    <footer class="row">
+      <%= render 'layouts/footer' %>
+    </footer>
+
 
     </div>
 
