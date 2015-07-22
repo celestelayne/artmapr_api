@@ -7,7 +7,7 @@ module SessionsHelper
 
   def current_user
     return false if session[:user_id] == nil
-    @current_user ||= User.find_by({id: session[:user_id]})
+    @current_user ||= User.find_by(id: session[:user_id])
   end
 
   def logout
