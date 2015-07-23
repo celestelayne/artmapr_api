@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+artjson = Art.get_json
+  # venues = Venue.create([{ name: 'SFMOMA'}, { name: 'Brooklyn Museum'}])
+  # Art.create(title: 'The Dancing Musicians', artist: 'Joan Brown', medium: 'bronze')
+
+Art.all.each do |art|
+artjson = eval(art.title)
+art.update( title: artjson ["title"], artist: artjson ["artist"], medium: artjson ["medium"] )
+end
