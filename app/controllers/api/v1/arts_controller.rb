@@ -3,20 +3,16 @@
       class ArtsController < ApplicationController
         class Art < ::Art
 
+          # respond_to :json
+
           def index
             @arts = Art.all
-            respond_with(@arts)
+            # render json: Art.all
             @artjson = Array.new
-          end
-
-          def new
-            @art = Art.new
-            respond_with(@art)
           end
 
           def show
             @art = Art.find(params[:id])
-            respond_with(@art)
           end
 
           def create

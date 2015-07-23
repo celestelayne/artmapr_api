@@ -1,9 +1,17 @@
 class Art < ActiveRecord::Base
 
+  require 'rest_client'
   require 'open-uri'
   require 'json'
 
-  # belongs_to :venues
+  belongs_to :venues
+
+  def self.get_json
+    url = "https://data.sfgov.org/resource/zfw6-95su.json?$select=artist, location_1, created_at, title, geometry, medium&$limit=50"
+    resource = RestClient::Resource.new(url, :method => :get, :verify_ssl => false)
+    data = resource.get
+    artjson = JSON.load(data).to_json
+  end
 
   def as_json(options={})
     super(:only => [:title, :artist, :medium],
@@ -11,13 +19,6 @@ class Art < ActiveRecord::Base
             :venues => {:only => [:name]}
           }
     )
-  end
-
-  def self.get_json
-    url = "https://data.sfgov.org/resource/zfw6-95su.json?$select=artist, location_1, created_at, title, geometry, medium&$limit=50"
-    @artjson = JSON.load(open(url).read)
-    # @artjson = open(url)
-    # response = RestClient.get 'https://www.kimonolabs.com/api/485d0k46?apikey=RG2ieKWJA4h3SOEFe9aVdTORGEFJa7ic'
   end
 
 end
