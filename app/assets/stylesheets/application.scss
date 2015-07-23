@@ -35,8 +35,8 @@
 
 --------------------*/
 
-  $bodyFont: 'Montserrat', sans-serif;
-  $serifFont: 'Playfair Display', serif;
+  $bodyFont: 'Source Sans Pro', sans-serif;
+  $serifFont: 'Libre Baskerville', serif;
   $bodyColor: #525252;
   $navColor: #F2F2F2;
   $artmaprColor: #5B3586;
@@ -243,6 +243,57 @@
       color: $navColor;
       background: $artmaprColor;
       border-color: $artmaprColor;
+  }
+
+  /*  ABOUT PAGE  */
+
+  .about-image {
+    width: 33.33%;
+    height: 350px;
+    border: 1px solid $navColor;
+    position: relative;
+    display: inline-block;
+    float:left;
+    list-style: none;
+  }
+
+  .about-text {
+    width: 66.66%;
+    height: 350px;
+    background-color: $artmaprColor;
+    position: relative;
+    display: inline-block;
+    float:left;
+    list-style: none;
+    border: 1px solid $navColor;
+    padding: 20px;
+
+    h4 {
+      color: $navColor;
+      line-height: 1.5;
+      letter-spacing: .05em;
+    }
+
+    a {
+      color: $navColor;
+      text-transform: uppercase;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+  }
+
+  .hide {
+    display: none;
+  }
+
+  #soma {
+    background-image: url("Mailchimp-Image-01.png");
+    background-position: center center;
+    background-size: cover;
+    overflow: hidden;
+    color: #DDFFD9;
   }
 
   /*  FOOTER  */
