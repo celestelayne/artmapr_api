@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-
+# tell which version of ruby to use
+ruby "2.2.1"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
@@ -39,7 +40,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rest-client', '~> 1.8.0'
 
 # Use Unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -66,13 +67,8 @@ group :development, :test do
   gem 'pry'
   gem 'pry-rails'
   gem 'pry-byebug'
+  gem 'pry-theme'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'pry-theme'
   gem 'annotate'
-  # # Access an IRB console on exception pages or by using <%= console %> in views
-  # gem 'web-console', '~> 2.0'
-  #
-  # # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  # gem 'spring'
 end

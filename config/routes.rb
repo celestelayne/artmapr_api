@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     post '/account/reset_token', to: 'users#reset_token'
 
     resources :users
+    resources :arts
 
     # get 'arts/index'
 
