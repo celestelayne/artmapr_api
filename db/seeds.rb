@@ -6,9 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-  artjson = Art.get_json
+  art_json = Art.get_json
 
   Art.all.each do |art|
-    artjson = eval(art.title)
-    art.update( title: artjson ["title"], artist: artjson ["artist"], medium: artjson ["medium"] )
+    art_json = eval(art.title)
+    art.update( title: art_json ["title"], artist: art_json ["artist"], medium: art_json ["medium"] )
   end
