@@ -7,8 +7,6 @@
 
           def index
             @arts = Art.all
-            # render json: Art.all
-            @artjson = Array.new
           end
 
           def show
