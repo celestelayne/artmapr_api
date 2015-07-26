@@ -15,10 +15,10 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle nav-item" data-toggle="dropdown">Account<b class="caret"></b></a>
             <ul class="dropdown-menu nav-item">
-              <li><%= link_to "Profile", current_user %></li>
-              <li><%= link_to "Settings", '#' %></li>
+              <li><i class="fa fa-user fa-navbar">&nbsp;&nbsp;<%= link_to "Profile", current_user %></i></li>
+              <li><i class="fa fa-cog fa-navbar">&nbsp;&nbsp;<%= link_to "Settings", '#' %></i></li>
               <li class="divider"></li>
-              <li><%= link_to "Log Out", logout_path %></li>
+              <li><i class="fa fa-power-off fa-navbar">&nbsp;&nbsp;<%= link_to "Log Out", logout_path %></i></li>
             </ul>
           </li>
 
