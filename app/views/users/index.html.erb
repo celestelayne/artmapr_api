@@ -1,29 +1,36 @@
-<h1>User Accounts</h1>
+<div class="col-md-8 col-md-offset-2">
 
-<div class="">
-  There are currently <%= @users.length %> signed up for the ArtMapr API.
-</div>
+  <h1>User Accounts</h1>
 
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Email</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
+  <div class="">
+    <h3>There are currently <%= @users.length %> signed up for the ArtMapr API.</h3>
+    <p><%= link_to content_tag(:span, ' Add New User', class: "glyphicon glyphicon-plus"), new_user_path, class: "btn btn-outlined btn-theme", type: "button" %></p>
+  </div>
+
+  <div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
       <tr>
-        <td><%= user.first_name %></td>
-        <td><%= user.last_name %></td>
-        <td><%= user.email %></td>
-        <td><%= link_to 'Show', user %></td>
-        <% if current_user.id == user.id %>
-          <td><%= link_to 'Edit', edit_user_path(user) %></td>
-          <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.first_name %></td>
+          <td><%= user.last_name %></td>
+          <td><%= user.email %></td>
+          <td><%= link_to content_tag(:span, '', class: "glyphicon glyphicon-plus"), user %></td>
+          <% if current_user.id == user.id %>
+            <td><%= link_to content_tag(:span, '', class: "glyphicon glyphicon-pencil"), edit_user_path(user) %></td>
+            <td><%= link_to content_tag(:span, '', class: "glyphicon glyphicon-trash"), user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  </div>
+</div>

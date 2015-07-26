@@ -1,31 +1,36 @@
+<div class="col-md-8 col-md-offset-2">
 <h1>Welcome to API Arts Index.</h1>
 
 <div>
-  There are currently <%= @arts.length %> pieces of art available in the ArtMapr API.
+  <h3>There are currently <%= @arts.length %> pieces of art available in the ArtMapr API.</h3>
+  <p><%= link_to content_tag(:span, ' Add New Art', class: "glyphicon glyphicon-plus"), new_art_path, class: "btn btn-outlined btn-theme", type: "button" %></p>
 </div>
 
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Artist</th>
-      <th>Medium</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @arts.each do |art| %>
+<div class="table-responsive">
+
+  <table class="table table-hover">
+    <thead>
       <tr>
-        <td><%= art.title %></td>
-        <td><%= art.artist %></td>
-        <td><%= art.medium %></td>
-        <td><%= link_to 'Show', art %></td>
-        <td><%= link_to 'Edit', edit_art_path(art) %></td>
-        <td><%= link_to 'Destroy', art, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Last Name</th>
+        <th>First Name</th>
+        <th>Title</th>
+        <th style="width: 30%">Medium</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @arts.each do |art| %>
+        <tr>
+          <td><%= art.artist_last_name %></td>
+          <td><%= art.artist_first_name %></td>
+          <td><%= art.title %></td>
+          <td style="width: 30%"><%= art.medium %></td>
+          <td><%= link_to content_tag(:span, '', class: "glyphicon glyphicon-plus"), art %></td>
+          <td><%= link_to content_tag(:span, '', class: "glyphicon glyphicon-pencil"), edit_art_path(art) %></td>
+          <td><%= link_to content_tag(:span, '', class: "glyphicon glyphicon-trash"), art, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<br />
-
-<%= link_to 'New Art', new_art_path %>
+</div>
+</div>
