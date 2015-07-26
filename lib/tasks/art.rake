@@ -5,4 +5,10 @@ namespace :art do
     Art.add_sf_data
     puts "SF Data Added"
   end
+
+  task sea_data: :environment do
+    Art.add_sea_data
+    puts "Seattle data added"
+  end
+  
 end
