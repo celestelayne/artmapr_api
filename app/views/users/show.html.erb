@@ -1,32 +1,31 @@
-<div class="col-md-8 col-md-offset-2">
+<div class="col-md-4 col-md-offset-4">
+  <div class="panel panel-default" id="profile-panel">
 
-  <div class="col-xs-6 col-md-4">
-    <h1>Account Profile</h1>
+    <div class="panel-heading">
+      <h2 class="panel-title">Account Profile</h2>
+    </div>
+
+    <div class="panel-body">
+      <h3>Welcome back, <%= @user.first_name %>!</h3>
     <div class="gravatar-image">
-      <%= gravatar_for @user %>
-      <a href="http://gravatar.com/emails" target="_blank">change photo</a>
+        <p><%= gravatar_for @user %></p>
+        <p><a href="http://gravatar.com/emails" target="_blank">change photo</a></p>
+        <hr>
+        <p><strong>Name: </strong><%= @user.first_name %> <%= @user.last_name %></p>
+        <p><strong>Email: </strong><%= @user.email %></p>
     </div>
-    <div>
-      <strong>Name:</strong>
-      <%= @user.first_name %> <%= @user.last_name %>
-    </div>
-    <p>
-      <strong>Email:</strong>
-      <%= @user.email %>
-    </p>
+
 
     <% if current_user != false %>
       <% if current_user == @user %>
-      <%= link_to 'Edit', edit_user_path(@user) %>
+      <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-outlined btn-theme btn-edit-profile" %>
       <% end %>
     <% end %>
   </div>
-  <div class="col-xs-12 col-md-8">
-    <h3>API Token</h3>
 
-    <p>
-      <%= @user.api_token %>
-    </p>
+  <div class="panel-footer">
+    <h3>API Token</h3>
+    <p><%= @user.api_token %></p>
   </div>
 
 </div>
