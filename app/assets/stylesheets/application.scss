@@ -205,6 +205,14 @@
       color: $navColor;
       margin-top: 0;
       margin-bottom: 0;
+
+      a {
+        color: $navColor;
+        text-decoration: none;
+      }
+      a:hover {
+        color: $artmaprColor;
+      }
     }
   }
 
@@ -415,5 +423,14 @@
       letter-spacing: .05em;
       padding-top: 10px;
       padding-bottom: 10px;
+    }
+
+    a {
+      color: $navColor;
+    }
+
+    a:hover {
+      color: $navColor;
+      text-decoration: none;
     }
   }
