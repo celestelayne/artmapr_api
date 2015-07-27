@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     get '/login', to: 'sessions#new'
     post '/login', to: 'sessions#create'
 
-    get '/playground', to: 'static_pages#playground'
+    get '/playground', to: 'arts#playground'
     get '/about', to: 'static_pages#about'
     get '/contact', to: 'static_pages#contact'
 
@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
     get '/account', to: 'users#show'
     post '/account/reset_token', to: 'users#reset_token'
+
+    # get '/arts/search/:q', to: 'arts#search'
 
     resources :users
     resources :arts
@@ -23,7 +25,6 @@ Rails.application.routes.draw do
       # /api/... Api::
       scope module: :v1 do
         resources :arts
-        # resources :venues, only: [:index]
       end
     end
 
