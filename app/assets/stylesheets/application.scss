@@ -367,7 +367,7 @@
     margin: auto;
     text-transform: uppercase;
     padding:8px 20px;
-    width: 15%;
+    width: 150px;
     background: none;
       -moz-user-select: none;
       background-image: none;
@@ -396,6 +396,10 @@
       margin-bottom: 0;
       vertical-align: middle;
       white-space: nowrap;
+  }
+
+  input#search {
+    width: 50%;
   }
 
     /*  PROFILE PAGE  */

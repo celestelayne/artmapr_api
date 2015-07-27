@@ -1,0 +1,30 @@
+<div class="col-md-8 col-md-offset-2">
+  <div class="row">
+    <!-- <h1>API PLAYGROUND</h1> -->
+  </div>
+  <div class="city-search well">
+    <form class="form-inline city-form">
+      <h2>City Search</h2>
+      <hr>
+
+      <div class="form-group" style="width: 100%">
+        <%= form_tag arts_path, method: :get do %>
+        <%= label_tag(:search, "City Name: ") %>
+        <%= text_field_tag :search, params[:search], placeholder: "e.g. New York City", class: "form-control" %>
+        <%= submit_tag 'Search', city: nil, class: "btn btn-outlined btn-theme playground-search-btn" %>
+      </div>
+      <% end %>
+    </form>
+
+    <div class="well">
+      <p>Response:</p>
+      <div>
+        <% if @arts.present? %>
+           <%= @arts.last.to_json %>
+        <% else %>
+          <p>There is no art currently available in <%= params[:search] %>.</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -81,6 +81,10 @@ class Art < ActiveRecord::Base
     end
   end
 
+  def self.search(search)
+    where('city LIKE ?', "%#{search}")
+  end
+
   # can only be called within a method
   private
 
