@@ -49,6 +49,9 @@ gem 'unicorn'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'autoprefixer-rails'
 
+# Photo Manipulation with Paperclip
+gem "paperclip", :git => "http://github.com/thoughtbot/paperclip.git"
+
 # Font Awesome
 gem 'font-awesome-sass'
 

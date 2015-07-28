@@ -20,6 +20,10 @@ class ArtsController < ApplicationController
     respond_with(@art)
   end
 
+  def edit
+    @art = Art.find(params[:id])
+  end
+
   private
 
   def get_art

@@ -20,7 +20,11 @@
 
 class Art < ActiveRecord::Base
 
-  belongs_to :venues
+  has_attached_file :photo,
+    :styles => {
+      :thumb => "80x80#",
+      :small => "150x150"
+    }
 
   # Step 1: Pull in the data
   def self.get_sf_data
