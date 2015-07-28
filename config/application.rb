@@ -18,6 +18,8 @@ Bundler.require(*Rails.groups)
 module ArtmaprApi
   class Application < Rails::Application
 
+    Paperclip::Railtie.insert
+
     config.middleware.insert_before 0, "Rack::Cors" do
       allow do
         origins '*'
