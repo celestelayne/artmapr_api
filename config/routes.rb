@@ -14,12 +14,8 @@ Rails.application.routes.draw do
     get '/account', to: 'users#show'
     post '/account/reset_token', to: 'users#reset_token'
 
-    # get '/arts/search/:q', to: 'arts#search'
-
     resources :users
     resources :arts
-
-    # get 'arts/index'
 
     namespace :api, defaults: {format: 'json'} do
       # /api/... Api::

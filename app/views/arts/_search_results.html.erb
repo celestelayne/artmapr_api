@@ -1,7 +1,9 @@
-<div class="col-md-8 col-md-offset-2">
-  <div class="row">
-    <!-- <h1>API PLAYGROUND</h1> -->
+<div class="col-md-8 col-md-offset-2 playground-body">
+
+  <div class="playground-header">
+    <h1>API PLAYGROUND</h1>
   </div>
+
   <div class="city-search well">
     <form class="form-inline city-form">
       <h2>City Search</h2>
@@ -18,13 +20,13 @@
 
     <div class="well">
       <p>Response:</p>
-      <div>
+      <pre>
         <% if @arts.present? %>
            <%= @arts.last.to_json %>
         <% else %>
-          <p>There is no art currently available in <%= params[:search] %>.</p>
+          <p class="hide">There is no art currently available in <%= params[:search] %>.</p>
         <% end %>
-      </div>
+      </pre>
     </div>
   </div>
 </div>

@@ -1,0 +1,22 @@
+<%= simple_form_for @art, html: { multipart: true } do |f| %>
+
+  <div class="field">
+    <%= f.input :artist_first_name, label: 'Artist first name' %>
+  </div>
+  <div class="field">
+    <%= f.input :artist_last_name, label: 'Artist last name' %>
+  </div>
+  <div class="field">
+    <%= f.input :title, label: 'Name of artwork' %>
+  </div>
+  <div class="field">
+    <%= f.input :medium, label: 'e.g. bronze, glass ...' %>
+  </div>
+  <div class="field">
+    <%= f.file_field :photo %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Update Art", class: "btn btn-primary" %>
+  </div>
+
+<% end %>
